@@ -3,7 +3,7 @@ Follow these steps to install the project locally:
 1. Clone the Repository
 Clone this repository to your local machine using the following command:
 
-# git clone [<repository-url>](https://github.com/Ahmedmaghrapy11/django-product-test)
+# git clone https://github.com/Ahmedmaghrapy11/django-product-test
 Replace <repository-url> with the URL of this repository.
 
 2. Set Up a Virtual Environment
