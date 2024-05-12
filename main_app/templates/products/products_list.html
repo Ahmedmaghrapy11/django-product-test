@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product List</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center m-5">Product List</h1>
+      <ul class="list-group">
+        {% for product in products %}
+        <li class="list-group-item">{{product.code}} - {{ product.name }}</li>
+        {% endfor %}
+      </ul>
+      <a href="{% url 'create_product' %}" class="btn btn-primary mt-3"
+        >Create Product</a
+      >
+    </div>
+  </body>
+</html>
