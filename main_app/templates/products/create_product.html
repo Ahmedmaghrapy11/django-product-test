@@ -1,39 +1,23 @@
-<!-- create_product.html -->
+{% extends 'base.html' %} 
+{% block title %} Add Product {% endblock %} 
+{% block content %}
+<h1 class="text-center m-5">Add Product</h1>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Product</title>
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <h1 class="text-center m-5">Create Product</h1>
-      <div class="text-center">
-        {% if messages %} {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}" role="alert">
-          {{ message }}
-        </div>
-        {% endfor %} {% else %}
-        <div class="alert alert-info" role="alert">No messages to display.</div>
-        {% endif %}
-        <form method="post">
-          {% csrf_token %}
-          <div class="form-group">
-            {{ form.code.label_tag }} {{ form.code }}
-          </div>
-          <div class="form-group">
-            {{ form.name.label_tag }} {{ form.name }}
-          </div>
-          <button type="submit" class="btn btn-primary">Create Product</button>
-        </form>
+  <div class="text-center m-5">
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.code.label_tag }} {{ form.code }}
       </div>
-    </div>
-  </body>
-</html>
+      <div class="form-group">
+        {{ form.name.label_tag }} {{ form.name }}
+      </div>
+      <button type="submit" class="btn btn-success">Add</button>
+    </form>
+  </div>
+{% endblock %}
