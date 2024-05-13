@@ -13,10 +13,6 @@ def products_list(request):
     products = Product.objects.filter(user=request.user)
     return render(request, 'products/products_list.html', {'products': products})
 
-from django.contrib import messages
-from .models import Product
-from .forms import ProductForm
-
 @login_required
 def create_product(request):
     if request.method == 'POST':
@@ -54,19 +50,3 @@ def delete_product(request, pk):
         product.delete()
         return redirect('products_list')
     
-# authentication
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('products_list')
-        else:
-            messages.error(request, 'Invalid username or password.')
-    return render(request, 'users/login.html')
-
-def logout_view(request):
-    logout(request)
-    return render(request, 'users/logout.html')
